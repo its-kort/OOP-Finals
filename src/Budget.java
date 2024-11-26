@@ -6,23 +6,26 @@ public class Budget {
 
     public double setAmount() {
         Scanner scanner = new Scanner(System.in);
-        try {
-            System.out.print("Enter your weekly/monthly budget: ");
-            amount = scanner.nextDouble();
-            
-            if (amount <= 0) {
-                System.out.println("Budget cannot be set to less than or equal to zero. Please try again.");
-                setAmount();
+        boolean validInput = false;
+
+        while (!validInput) {
+            try {
+                System.out.print("Enter your weekly/monthly budget: ");
+                amount = scanner.nextDouble();
+
+                if (amount <= 0) {
+                    System.out.println("Budget must be greater than zero. Please try again.");
+                    return amount;
+                }
+
+                validInput = true;
+                System.out.println("Your budget has been set to: PHP" + amount);
+
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please try again.\n");
             }
-
-        } catch (InputMismatchException e) {
-            System.out.println("Invalid input. Please try again.\n");
-            setAmount();
         }
-        
-        scanner.close();
         return amount;
-
     }
 
     public double getAmount() {

@@ -1,11 +1,16 @@
 public class Expense extends BudgetItem {
     private double amount;
-    private String deadline;
+    private String category;
 
-    public Expense(String category, double amount, String deadline) {
+    public Expense(String category, double amount) {
         super(category);
+        this.category = category;
         this.amount = amount;
-        this.deadline = deadline;
+    }
+
+    @Override
+    public double calculateCost() {
+        return amount;
     }
 
     public double getAmount() {
@@ -16,16 +21,12 @@ public class Expense extends BudgetItem {
         this.amount = amount;
     }
 
-    public String getDeadline() {
-        return deadline;
-    }
-
-    public void setDeadline(String deadline) {
-        this.deadline = deadline;
-    }
-
     @Override
-    public double calculateCost() {
-        return amount;
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

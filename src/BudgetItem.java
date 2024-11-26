@@ -13,5 +13,9 @@ public abstract class BudgetItem {
         this.name = name;
     }
 
+    public String getCategory() {
+        return null;
+    }
+
     public abstract double calculateCost();
 }
